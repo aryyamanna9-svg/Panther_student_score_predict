@@ -11,7 +11,7 @@ app.secret_key = "supersecretkey"
 # ==============================
 # Database Setup (SQLite)
 # ==============================
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'users.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -28,7 +28,7 @@ class User(db.Model):
 # ==============================
 # Load ML Model
 # ==============================
-MODEL_PATH = r"C:\Users\Aryya Manna\OneDrive\Desktop\student\model\student_score_model.pkl"
+MODEL_PATH = os.path.join(BASE_DIR, "model", "student_score_model.pkl")
 
 def load_model(path):
     if not os.path.exists(path):
@@ -46,7 +46,6 @@ model = load_model(MODEL_PATH)
 # ==============================
 # Routes
 # ==============================
-
 @app.route("/")
 def home():
     return render_template("index.html")
@@ -124,7 +123,7 @@ def predict():
         return render_template("result.html", prediction=prediction, input_data=input_data)
 
     except Exception as e:
-        return f"<h3>Error: {e}</h3>"
+        return f"<h3>Error during prediction: {e}</h3>"
 
 # ==============================
 # Run App
