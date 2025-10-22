@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Student Score Prediction</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Floating animation for card */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.animate-float { animation: float 6s ease-in-out infinite; }
+</style>
+<script>
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        primary: "#00ff88",
+        "background-dark": "#101922",
+      },
+      fontFamily: { display: ["Space Grotesk", "sans-serif"] },
+    },
+  },
+};
+</script>
+</head>
+<body class="bg-background-dark font-display min-h-screen flex flex-col relative">
+
+<!-- Background Image -->
+<div class="absolute inset-0 z-0">
+  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN0JSeKSsYu_qm3sqr93HYu5VFzpYtT-TjSKm0QweWycqeCD4R43kZnGP0Mm7dLif5DrKmWVUCwB8zPFEPYMt5prh8aNI_X3gs6lbZJkV5ctGbCivT1Y2MfgMc23WFqTJtRpsVIkNINvGbf0pm_QYb-KtCWGPdc4os1-mpdASwWMBnk2jmQF1_U6sWIr0VdTQDKk5RCpFcZ0PLI1UZxVudd9CyKm13RjFDigfmiW9uaee9UYiNeu8yqQkxsKADugJUD0OSr8G1LPA" class="w-full h-full object-cover"/>
+  <div class="absolute inset-0 bg-black/50"></div>
+</div>
+
+<!-- Header -->
+<header class="relative z-10 flex items-center justify-between px-8 py-6 border-b border-gray-700">
+  <h1 class="text-3xl font-bold text-primary">Panther Predictor</h1>
+  <nav class="hidden md:flex gap-6">
+    <a href="/" class="text-gray-400 hover:text-primary transition">Home</a>
+    <a href="/predict-form" class="text-gray-400 hover:text-primary transition">Predict</a>
+    <a href="/leaderboard" class="text-gray-400 hover:text-primary transition">Leaderboard</a>
+    <a href="/about" class="text-gray-400 hover:text-primary transition">About</a>
+  </nav>
+</header>
+
+<!-- Main Content -->
+<main class="relative z-10 flex flex-col items-center justify-center flex-1 py-12 px-6">
+  <div class="w-full max-w-xl flex flex-col gap-8">
+
+    <!-- Page Title -->
+    <div class="text-center">
+      <h2 class="text-4xl font-bold text-white tracking-tight">Predict Student Scores</h2>
+      <p class="text-gray-300 mt-2">Fill out the form below to forecast student performance.</p>
+    </div>
+
+    <!-- Glassmorphic Form Card -->
+    <form action="/predict" method="post" class="flex flex-col gap-6 p-8 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg animate-float">
+      <input type="text" name="Gender" placeholder="Gender (Male/Female)" required class="w-full h-14 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary focus:outline-none"/>
+      <input type="number" step="any" name="Study_Hours_per_Week" placeholder="Study Hours per Week" required class="w-full h-14 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary focus:outline-none"/>
+      <input type="number" step="any" name="Attendance_Rate" placeholder="Attendance Rate (%)" required class="w-full h-14 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary focus:outline-none"/>
+      <input type="number" step="any" name="Past_Exam_Scores" placeholder="Past Exam Scores" required class="w-full h-14 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary focus:outline-none"/>
+      <input type="text" name="Parental_Education_Level" placeholder="Parental Education Level" required class="w-full h-14 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary focus:outline-none"/>
+      <input type="text" name="Internet_Access_at_Home" placeholder="Internet Access (Yes/No)" required class="w-full h-14 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary focus:outline-none"/>
+      <input type="text" name="Extracurricular_Activities" placeholder="Extracurricular Activities (Yes/No)" required class="w-full h-14 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary focus:outline-none"/>
+      <input type="number" step="any" name="Final_Exam_Score" placeholder="Final Exam Score" required class="w-full h-14 px-4 rounded-lg border border-gray-300 bg-white text-gray-900 focus:ring-2 focus:ring-primary focus:outline-none"/>
+      <button type="submit" class="w-full h-14 bg-primary text-white font-bold rounded-lg hover:bg-primary/90 transition-all">Predict</button>
+    </form>
+
+    <!-- Info Box -->
+    <div class="flex items-center gap-3 p-4 rounded-xl bg-primary/20 backdrop-blur-md border border-primary/30">
+      <span class="material-symbols-outlined text-primary text-2xl">info</span>
+      <p class="text-sm text-blue-200">Predictions are final and cannot be changed after submission.</p>
+    </div>
+
+    <!-- Back Link -->
+    <div class="text-center">
+      <a href="/" class="text-gray-400 hover:text-primary transition">← Back to Home</a>
+    </div>
+
+  </div>
+</main>
+</body>
+</html>
