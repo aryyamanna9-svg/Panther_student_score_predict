@@ -1,4 +1,4 @@
-# Panther Student Score Predict
+# Panther Student Score Predict!
 
 A Machine Learning web application that predicts student academic performance based on various educational and personal factors. The project uses Python, Flask, and Scikit-learn to provide score predictions through a user-friendly web interface.
 
