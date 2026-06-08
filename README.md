@@ -78,4 +78,4 @@ Aryya Manna
 
 B.Tech CSE (AI & ML)
 
-Passionate about Artificial Intelligence, Machine Learning, Web Development, and Game Development.
+Passionate about Artificial Intelligence, Machine Learning, and Game Development.
